@@ -14,7 +14,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 OCR_API_KEY = os.getenv("OCR_API_KEY")  # Optional for OCR.space
 
 st.set_page_config(page_title="Handwriting Recognition", layout="centered")
-st.title("📝 Handwriting Recognition using Groq")
+st.title("📝 Handwriting Recognition")
 
 uploaded_file = st.file_uploader("Upload a handwritten image", type=["png", "jpg", "jpeg"])
 
