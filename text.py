@@ -54,5 +54,8 @@ if uploaded_file:
             else:
                 st.warning("OCR failed to extract any text.")
 
+
         except Exception as e:
-            st.error(f"Error during OCR or LLM processing: {e}")
+            error_type = type(e).__name__            
+            st.error(f"❌ {error_type}: {str(e)}")
+
