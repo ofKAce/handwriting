@@ -27,7 +27,7 @@ if uploaded_file:
             # Convert to RGB and compress image
             image = image.convert("RGB")
             max_size = (1024, 1024)
-            image.thumbnail(max_size, Image.ANTIALIAS)
+            image.thumbnail(max_size, Image.Resampling.LANCZOS) 
 
             image_bytes = BytesIO()
             image.save(image_bytes, format='JPEG', quality=70)
