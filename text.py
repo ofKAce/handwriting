@@ -14,7 +14,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 OCR_API_KEY = os.getenv("OCR_API_KEY")
 
 st.set_page_config(page_title="Handwriting Recognition", layout="centered")
-st.title("📝 Handwriting Recognition using Groq + OCR")
+st.title("📝 Handwriting Recognition")
 
 uploaded_file = st.file_uploader("Upload a handwritten image", type=["png", "jpg", "jpeg"])
 
@@ -64,7 +64,7 @@ if uploaded_file:
             else:
                 st.text_area("🧾 Extracted Text", extracted_text, height=150)
 
-                with st.spinner("🤖 Interpreting text using Groq..."):
+                with st.spinner("🤖 Interpreting text"):
                     llm = ChatGroq(model="llama3-70b-8192", api_key=GROQ_API_KEY)
                     prompt = ChatPromptTemplate.from_messages([
                         ("system", "You are an AI that explains handwritten notes."),
@@ -73,7 +73,7 @@ if uploaded_file:
                     chain = prompt | llm | StrOutputParser()
                     answer = chain.invoke({"handwriting": extracted_text})
 
-                    st.success("💡 Interpretation by LLaMA3:")
+                    st.success("💡 Interpretation")
                     st.markdown(answer)
 
     except Exception as e:
